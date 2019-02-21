@@ -1,6 +1,6 @@
 #include<iostream>
 #include<typeinfo>
-
+#include<cmath>
 using namespace std;
 
 struct Complex
@@ -15,15 +15,14 @@ struct Complex
    valores que usted desee */
    
    struct Complex complejo;
-   complejo.real=25.6;
-   complejo.imag=31.11;
+   
    
 /* 3. Declare una variable llamada "state" que puede cambiar desde el valor
    INICIAL, pasando por los valores PREPARACION y TRABAJANDO hasta el valor FINALIZACION
    el valor INICIAL equivale a 2 */
 
-enum state = {INICIAL=2,PREPARACION,TRABAJANDO,FINALIZACION};
-
+enum estado {INICIAL=2,PREPARACION,TRABAJANDO,FINALIZACION};
+enum estado state;
 /* 4. Declare una variable global que debe almacenar un valor entero positivo mayor a 4294967296
    y ademas debe poderse compartir entre distintos archivos de codigo fuente .cpp */
 extern unsigned long int n1;
@@ -42,7 +41,7 @@ extern unsigned long int n1;
 /* 7. Corrija la siguiente declaracion para que el compilador no arroje un error (o warning) por
    incumplir con el criterio de "Semantica" al usar el lenguaje C++ */
 
-unsigned float latina_stereo = 100.9;
+  float latina_stereo = 100.9;
 
 /* 8. La siguiente funcion (mas adelante aprenderemos mas de funciones) necesita que se le declare
    una variable (llamada extr_var) de tipo caracter, cuyo valor simpre sera positivo, y que ademas puede cambiar en 
@@ -84,8 +83,8 @@ void tipo_del_resultado(void)
 void declaracion_explicita(void)
 {
 	double oper_1 = 5678983456.44444444444;
-	unsigned long double oper_2 = 5e15;
-	unsigned long double result = 0;
+	long double oper_2 = 5e15;
+	long double result = 0;
 	
 	result = oper_1 + oper_2;
 	cout<<"5. El tipo de dato de result "<<result<<" en la funcion declaracion_explicita es: "<<typeid(result).name()<<endl;
@@ -96,13 +95,13 @@ void declaracion_explicita(void)
 
 void funcion_amiga(void)
 {
-	const unsigned char letra_a;
+	unsigned char letra_a;
 	letra_a = 'A';
 }
 unsigned char modificacion;
 void funcion_necesitada(void)
 {
-  unsigned char letra_a= modificacion;
+  char letra_a= modificacion;
 	if(letra_a == 'A')
 		cout<<"6. Es el caracter esperado: "<<letra_a<<endl;
 	else
@@ -150,7 +149,11 @@ void state_machine(void)
 
 int main()
 {	/* Espacio para declaraciones en la funcion main */
-	
+
+
+	/*punto 2*/
+	complejo.real=25.6;
+   complejo.imag=31.11;
 	
 	/* De esta linea en adelante usted no debe modificar nada */
 	cout<<"1. Complejo es igual a: "<<complejo.real<<((complejo.imag > 0)?"+":"-")<<(abs(complejo.imag))<<"j"<<endl;
